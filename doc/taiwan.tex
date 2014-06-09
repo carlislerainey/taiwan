@@ -1,0 +1,322 @@
+%
+%
+\documentclass[12pt]{article}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{fullpage}
+\usepackage{bibentry}
+\usepackage{footmisc}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{natbib}
+\bibpunct{(}{)}{,}{a}{}{;}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{multicol}
+\usepackage{setspace}
+\singlespace
+% Fix enumerate environment
+\newenvironment{my_enumerate}
+{\begin{enumerate}
+\setlength{\itemsep}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\parsep}{0pt}}
+{\end{enumerate}}
+%Redefine the first level
+\renewcommand{\theenumi}{\arabic{enumi}.}
+\renewcommand{\labelenumi}{\theenumi}
+%Redefine the second level
+\renewcommand{\theenumii}{\alph{enumii}.}
+\renewcommand{\labelenumii}{\theenumii}
+%Redefine the third level
+\renewcommand{\theenumiii}{\roman{enumiii}.}
+\renewcommand{\labelenumiii}{\theenumiii}
+%Redefine the fourth level
+\renewcommand{\theenumiv}{\Alph{enumiv}.}
+\renewcommand{\labelenumiv}{\theenumiv}
+% Fix section headings
+\usepackage{sectsty} 
+\sectionfont{\large\centering\normalfont} 
+\subsectionfont{\small\normalfont\itshape} 
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{2ex}{1ex}
+\titlespacing{\subsection}{0pt}{2ex}{1ex}
+\titlespacing{\subsubsection}{0pt}{2ex}{0ex}
+\titleformat{\subsubsection}[runin]{\normalfont\sc}{}{.5em}{}[.---]
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem{obs}{Observation}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+\newtheorem{mydef}{Definition}
+\usepackage{microtype}
+\usepackage{hyperref}
+%\usepackage{hypdvips}
+\long\def\symbolfootnote[#1]#2{\begingroup%
+\def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup}
+\hypersetup{
+ pdftitle={Does District Magnitude Matter? The Case of Taiwan}, % title
+ pdfauthor={Carlisle Rainey}, % author
+ pdfkeywords={Taiwan} {electoral rules} {no effect} {proportional rules} {turnout},
+ pdfnewwindow=true, % links in new window
+ colorlinks=true, % false: boxed links; true: colored links
+ linkcolor=Sepia, % color of internal links
+ citecolor=Sepia, % color of links to bibliography
+ filecolor=Sepia, % color of file links
+ urlcolor=Sepia, % color of external links
+ menucolor=Sepia
+}
+
+\title{Does District Magnitude Matter? The Case of Taiwan}
+
+\date{\today}
+\usepackage[normalem]{ulem}
+
+\begin{document}
+
+%\maketitle
+\begin{center}
+{\LARGE Does District Magnitude Matter? The Case of Taiwan}\\\vspace{2mm}
+\vspace{3mm}
+Carlisle Rainey\symbolfootnote[1]{I thank Jason Barabas, Bob Jackson, Dave Siegel, and Deb Sinha for helpful comments on previous versions of this manuscript.}\\
+Departments of Political Science and Statistics\\
+Florida State University\\
+\href{http://www.carlislerainey.com}{carlislerainey.com}\\
+\href{mailto:crainey@fsu.edu}{crainey@fsu.edu}\\\vspace{3mm}
+%For the most recent draft of this manuscript,\\see \href{http://www.carlislerainey.com/research/arguing-for-a-negligible-effect}{crain.co/nme}.
+
+\end{center}
+
+%\singlespace
+%\begin{center}
+%Word Count: 5,636
+%\end{center}\vspace{3mm}
+
+\begin{quote}
+\begin{center} Abstract\end{center}
+A sizable literature on electoral institutions argues that proportional electoral rules lead to higher voter turnout. However, recent work finds little evidence that the effect generalizes beyond western Europe and the theoretical arguments remain sparse, incomplete, and contradictory. I use a well-chosen data set to resolve problems of omitted variable bias and Bayesian model averaging to address model uncertainty and evaluate evidence both for and against the null hypotheses. I find evidence that the proportionality of electoral rules exerts no meaningful effect on turnout or the any of the theoretical mechanisms I test.
+\end{quote}
+
+
+\doublespace
+%\newpage
+A literature extending forward from \cite{Powell1986} suggests that majoritarian electoral rules generate chronically lower voter turnout. Since politicians have incentives to represent voters, who tend to have higher socioeconomic status, some political scientists have argued that countries with chronically low participation rates should switch to proportional rules in order to boost turnout \citep{Lijphart1997, Lijphart1999}. However, recent work that extends empirical tests beyond western Europe casts doubt upon the general causal claim that proportional rules generate higher turnout. For example, using a large set of democracies inside and outside Europe, \cite{BlaisDobrzynska1998} demonstrate that, while electoral institutions might affect participation, the effect is most likely quite small. Further, \cite{BlaisAarts2006} criticize this literature for claiming that proportional rules cause higher turnout, while only observing a small, inconsistent correlation and having conflicting explanations for the effect. Theoretically, \cite{Jackman1987} points out that voters have less incentive to participate in PR systems because elections are less decisive \citep{Powell2000}. Further, \cite{SchramSonnemans1996} offer a formal model and experimental results that suggest proportional rules \textit{decrease} the incentives to mobilize voters. \cite{Rainey2011} elaborates on this finding, showing both formally and empirically that parties exert greater mobilization effort under \textit{dis}proportional rules. These authors offer sufficient theoretical and empirical evidence to give political scientists pause, suggesting that until the effect is demonstrated in a wider range of cases and a more compelling theoretical argument emerges, skepticism is warranted and further study is required.
+
+In this paper, I use survey data from the 2001 Taiwan legislative election to test the claim that more proportional electoral rules lead to higher turnout, as well as several of the causal mechanisms. These data are especially useful for testing this claim because Taiwan is one of few countries with substantial variation in the proportionality of electoral rules across electoral districts. In particular, the 2001 Taiwanese electoral system features several single-member districts and multimember districts with magnitudes up to ten. Using these data allows me to hold the national political context constant as district magnitude varies, unlike earlier studies, making the inferences more compelling.
+
+I use a Bayesian method to combat problems of model uncertainty and assign probabilities to hypotheses \citep{MontgomeryNyhan2010}, finding little support for the claim that proportional rules lead to higher turnout or for the theoretical mechanisms that some researchers have suggested to explain the purported relationship. In fact, using posterior probabilities, I argue that proportional rules have no meaningful effect on turnout and that none of the proposed methods operates.
+
+\section*{Electoral Rules, Parties, and Turnout}
+
+As district magnitude increases, two important and related changes occur in the political system. First, the assignment of seats based on vote shares becomes more proportional as district magnitude increases \citep{Cox1997, Benoit2000}. \cite{Duverger1954} first identified this as the ``mechanical effect.'' When district magnitude is small (e.g. single member districts), electoral rules punish small parties by assigning a smaller percentage of legislative seats to these parties than their vote share. In contrast, larger parties tend to receive a larger percentage of seats than their vote share. However, as district magnitude increases, the assignment of seats tends to be more proportional. 
+
+Second, a well-developed theoretical and empirical literature extending forward from Duverger suggests that district magnitude increases the number of political parties. In particular, as magnitude increases, the number of parties increases as well, but a larger increase occurs in systems with more social cleavages.   \cite{Cox1999} shows formally that parties have a stronger incentive to coordinate and drop out of contests as the district magnitude shrinks. Sophisticated empirical work confirms many of these theoretical predictions \citep[e.g.][]{ClarkGolder2006}.
+
+\subsection*{The Proportionality of Seat Assignment}
+
+All else constant, larger district magnitudes leads to more proportional outcomes, while smaller magnitudes leads to less proportional outcomes \citep{Cox1997, Benoit2000}. \cite{Banduccietal1999} and \cite{BowlerLanoue1992} argue that systems that disproportionately reward large parties leave supporters of small parties feeling under-represented, or not represented at all. In the extreme case of a single-member district with a plurality rule, the party that wins the most votes, even if it is less than a majority, represents the entire district. Often, 45\% of voters or more find themselves with no candidate representing them in the legislature. While districts with magnitudes greater than one do not easily allow such severely biased outcomes, many small parties get no seats at all. In general, as district magnitude gets larger, smaller parties are able to win seats. Thus, as district magnitude increases, more voters receive representation because their preferred party receives enough votes to earn a seat. This leads to the first empirical hypothesis, which focuses on whether individuals feel represented or not.
+
+\begin{quote}
+        \textsc{Representation Hypothesis:} As district magnitude increases, potential voters are more likely to feel represented in the political system.
+\end{quote}
+
+\subsection*{Ideological Heterogeneity}
+
+\cite{Downs1957} and \cite{Cox1999b} show that when district magnitude is one, all but two parties have an incentive to exit the system and the two remaining parties have an incentive to converge to the median voter. However, as district magnitude increases, so does the number of political parties that can exist in the system in equilibrium \citep{Cox1997, Cox1999, ClarkGolder2006}. More importantly, \cite{Cox1990} formally shows that these rules also give parties an incentive to disperse across the ideological space. This has the effect of increasing the ideological heterogeneity of the parties in the district because as the district magnitude increases, parties have an incentive to appeal to more narrow constituencies and develop a political niche. As the heterogeneity of parties' ideologies increases, voters should be more likely to find a party they agree with and feel close to \citep{Bowleretal1994}. This leads to the second hypothesis, which focuses on whether or not voters feel close to a political party.
+
+\begin{quote}
+        \textsc{Closeness Hypothesis:} As district magnitude increases, potential voters are more likely to feel close to a political party.
+\end{quote}
+
+\subsection*{The Efforts of Political Parties}
+
+Previous work has often assumed that proportional districts create greater incentives for parties to mobilize voters, since single-member districts are plagued with the problem of noncompetitive districts. Proportional systems, on the other hand, create ``nationally competitive districts'' \citep{Powell1982}. \cite{Cox1999} offers a formal extension of Powell's suggestion, arguing that elites will ``exert more mobilization effort when the probability of that effort being decisive is greater.'' He argues that there is likely to be less variance in the effort exerted by parties in PR systems, and that the effort will be on average greater than in majoritarian systems. \cite{Selb2009} offers a sophisticated empirical test of this argument, finding that turnout varies less in PR systems and is on average higher. This leads to the third hypothesis, which focuses on whether political parties contact citizens.
+
+\begin{quote}
+        \textsc{Contact Hypothesis:} As district magnitude increases, potential voters are more likely to be contacted by a political party.
+\end{quote}
+
+\subsection*{Turnout}
+
+If citizens feel represented, feel close to a party, and are mobilized by a party, they are more likely to turn out. \cite{Schattschneider1960} argues that citizens whose views are not represented in the political system become chronically disengaged. \cite{Solt2008, Solt2010} extends and tests this argument and finds strong support for this idea. A large literature in American politics stemming from \cite{Campbelletal1960} shows that citizens who feel closely attached to a political party are more likely to turn out. \cite{Downs1957} notes that campaigns serve the function of reducing information costs, helping voters overcome the costs of turning out to vote. \cite{GerberGreen2000} point out empirically that campaigns can get citizens to the polls, especially through canvassing.
+
+\begin{quote}
+\textsc{Turnout Hypothesis:} As district magnitude increases, potential voters are more likely to turn out to vote.
+\end{quote}
+
+In summary, the literature has proposed that PR might lead to higher turnout and proposed several mechanisms. PR allows supporters of small parties to receive representation in the legislature, which gives citizens a greater stake in politics. PR also causes parties to disperse across the ideological space and make more effective, narrow appeals to voters, which allows voters to develop a close attachment to particular parties. Finally, PR increases parties' incentives to mobilize voters by ensuring that non-competitive districts do not emerge. Each of these consequences of PR should lead to an increase in voter participation.
+
+\section*{Data and Measures}
+
+I use survey data from the 2001 Taiwanese legislative elections collected by Taiwan's Election Democracy Study and included in Module 2 of the Comparative Studies of Electoral Systems.\footnote{These data are available for download from the Comparative Studies of Electoral Systems website at \texttt{www.cses.org}.}
+These data offer a rich source of information district and individual-level variables to assess the effect of district magnitude on a variety of attitudinal and behavioral outcomes. 
+
+\subsection*{Problems with Cross-National Research}
+
+One problem with current research is that PR countries differ in many ways from majoritarian countries. Indeed, \cite{Powell2000} suggests the two are so different as to constitute different ``visions'' of democracy. Even more problematic, differences between countries lead to the adoption of different electoral rules \citep{BlaisDobrzynskaIndridason, Boix1999}. Therefore, making convincing causal inferences using cross-national observational data is difficult because it is impossible to control for all differences between PR and majoritarian countries. Any excluded variable that has a meaningful influence on the outcome will lead to biased estimates \citep{Greene2008}. The problem lies in the fact that aspects of the national political environment likely differ between PR and majoritarian systems. Omitting variables (e.g. to preserve degrees of freedom or because they are unobservable) might lead the analyst to incorrectly conclude that the explanatory variable of interest has a meaningful effect on the outcome. In this setting, separating the effects of electoral rules and national political context is very difficult.
+
+Unlike most countries, Taiwan features substantial variation in proportionality across districts. District magnitude in Taiwan ranges from one to ten, but also includes several single-member districts. In this case, district magnitude serves as an excellent measure of the proportionality of the electoral rules \citep{Cox1990, Benoit2000}. That is, Taiwan offers a case in which the proportionality of the electoral rules varies \textit{within} a constant national political context. Most countries have little variation in district magnitude, and those that do often have no single-member districts. For example, Portugal has district magnitudes ranging from three to twenty-seven, but for the purposes of this study, it is important that countries include both single- and multi-member districts, since a larger effect of district magnitude on proportionality occurs near one. Thus, Taiwan offers a rich opportunity to study the effect of district magnitude. 
+
+In trying to make a causal inference, an analyst must consider how the key explanatory variable is assigned. In the best case scenario, this variable is assigned randomly so that the variable of interest is not correlated with other variables that might influence the outcome. As discussed above, electoral rules are not randomly assigned across counties, which makes causal inference using observational data difficult. However, district magnitude in Taiwan is based on the size of the administrative regions, which also serve as electoral districts. This alleviates some concern over strategic politicians assigning district magnitude in a systematic and politically beneficial manner. However, the administrative regions may still differ in important ways. Economic and social conditions, ethnic makeup, education levels, and population density might vary systematically across the electoral districts. These factors must be controlled in the analysis. However, these Taiwanese data do eliminate the need to control for national-level variables. Because the national electoral environment is not changing in the single election I study, it is not necessary to control for its many features.
+
+\subsection*{Electoral Districts and Counties}
+
+Unfortunately, information about the respondents' electoral districts is not collected within the CSES data.\footnote{As far as I am aware, no national-level surveys record this information.} However, information is gathered about the respondents' county of residence, which closely corresponds to the electoral district. Only three counties contain multiple electoral districts (and all have similar magnitude) and 24 of the remaining 27 counties contain exactly one electoral district. Taipei County contains three electoral districts, while Taipei City and Kaohsiung City contain two electoral districts each. Although I do not know respondents' exact electoral district within these counties, the electoral districts are of similar magnitude and are geographically contiguous.
+
+\subsection*{District Magnitude} 
+
+The CSES data contain a host of national and district level data, including district magnitude, the variable of interest in the analysis. The relationship between district magnitude and proportionality, however, is non-linear. Increasing district magnitude by one seat when district magnitude is small has a large effect on proportionality. When district magnitude is large, though, adding an additional seat does not increase the proportionality as much. It seems appropriate to take this non-linearity into account by using the natural log of magnitude in a linear predictor. I follow this approach in the analyses presented here, but other methods of construction yield substantively similar conclusions.\footnote{However, I also considered two other specifications. I replicated the analysis simply using district magnitude. Non-linear marginal effects are still allowed in this model because of the non-linear logit link function. I also replicated the results using a dummy variable for single-member districts. Substantive conclusions using the alternative measures are quite similar. For simplicity of presentation, I present only models using the natural log of district magnitude.}
+
+\subsection*{Survey Variables}
+
+Although there are many ways for citizens to participate in a democratic political system--including writing letters, donating time or money to political campaigns, or even discussing politics with a friend-- I focus this analysis of participation on the decision to vote. Among the many forms of participation, turnout is perhaps the most important for democratic theory, as voting serves as the only formal mechanism for citizens to directly hold their representative accountable. If certain interests are under-represented at the polls, then the system has no formal mechanism to correct for the bias \citep{Lijphart1997, Lijphart1999}. Thus, turnout is one of the most important modes of participation. Further, I am building theoretically and substantively on previous literature that focuses mainly on the decision to turn out. This allows me to show important results for a commonly analyzed form of political participation.\footnote{Substantive conclusions do not change for a wide range of participatory acts.} To measure turnout, I use an indicator variable that equals one if the respondent self-reported turning out to vote, and zero otherwise.
+
+In addition to turnout, I attempt to explain whether the respondent feels represented. I measure this by a survey question that asks, ``Would you say that any of the parties in Taiwan represents your views reasonably well?" The indicator variable equals one if respondents indicate they felt represented and zero if they did not. Respondents who did not know or refused to answer were coded as missing. This measure has the obvious problem that it asks whether any party \textit{in Taiwan} represents the respondent's views. It might be the case that no party with a chance of winning a seat in the respondent's own district represents her views, but that some party in another, larger district does. This biases one toward a null effect, because all respondents would be looking to the same set of parties, leading to no differences across electoral districts. However, this survey question still offers a useful test because, all else equal, respondents almost certainly are less likely to feel represented by a party not seriously competing in their own district.
+
+Also, I attempt to explain whether or not respondents feel close to a political party. I measure this through a survey question that asks, ``Do you usually think of yourself as close to any particular political party?" The indicator variable equals one if the respondent indicated that he or she felt close to a political party, and zero if not. Again, respondents who did not know or refused to answer were coded as missing. This variable does not have the same small bias as the measure of whether the respondent feels represented.
+
+Finally, I model whether a political party contacted the respondent. I measure this through a survey question that asks, ``During the last campaign did a candidate or anyone from a political party contact you to persuade you to vote for them?'' The indicator variable equals one if the respondent replied yes, and zero not. Those who refused or did not know are coded as missing.
+
+\subsection*{Control Variables}
+
+Obviously, even to consider making tentative causal claims from these observational data, I must control for other potential causes of the four outcomes of interest, particularly other potential causes that are correlated with the respondents' region of residence. However, the literature on comparative political behavior offers little guidance, especially in the particular case of Taiwan. A large literature on turnout in American politics suggests ``common suspects'' such as age, education, and income \citep{Campbelletal1960, RosenstoneHansen1993}. However, these variables might be less important in Taiwan. A host of control variables are used in comparative studies of political behavior \citep[e.g.][]{KarpBanducci2008, Blais2000}. Beyond the ``usual suspects,'' variables such as union membership, marital status, gender, and population density might be important as well. Ethnicity is also an important variable to take into account in the analysis, since it is correlated with the respondents' region of residence and might affect the respondents' attitudes toward politics and participation.
+
+I can exclude some variables \textit{a priori}, especially those that do not occur causally prior to the ``treatment'' of district magnitude (see \citealt{GelmanHill2007}, pp. 188-90, for a discussion of this point). For example, voter attitudes, such as feeling close to a political party, might predict turning out well, but do not belong in the model of turnout, since the goal is to estimate the effect of district magnitude, which theoretically causes higher turnout by making it more likely that citizens will find a party they like. If the theory is correct, including an indicator for feeling close to a political party will lead to an underestimation of the effect of district magnitude. Therefore, political attitudes, which are unlikely to influence district magnitude, but are very likely to be influenced \textit{by} magnitude, should be excluded from the model. In addition to attitudes, I should not include district-level variables, such as party ideologies or effective number of electoral parties. Again, these variables are very likely to be influenced by district magnitude, but unlikely to influence district magnitude. For the same reasons listed above, including these variables in the model will likely lead me to underestimate the effect of district magnitude. 
+
+The variables available in the CSES that meet the criteria for control variables include the following: age in years and indicators for whether the respondent is male, married, a union member, from a rural area, from a small or middle-sized town, from a suburb, white-collar, a worker, of Hakka ethnicity, of Min-Nan ethnicity, or  a mainlander. To capture the potential non-linear effects of age, I also include the respondent's squared age divided by 100.
+
+\section*{The Empirical Approach}
+
+Most statistical analyses in political science proceed by choosing, \textit{a priori}, a statistical model, often some linear regression or generalized linear model estimated with ordinary least squares or maximum likelihood. After estimating the coefficients, the researcher tests the hypothesis that some coefficient of interest is equal to zero. If the data are more extreme than would be expected if the null hypothesis were true, then the null hypothesis is rejected in favor of an alternative hypothesis, such as that the coefficient is greater than zero.
+
+For the purposes of the analysis, this process has two important shortcomings. First, I do not have strong prior beliefs about which model is correct, particularly what control variables are important to include. The typical procedure offers little guidance in the presence of model uncertainty. Second, I would like to be able to evaluate evidence for and against the null hypothesis. The classic procedure only allows me to assess evidence against the null. 
+
+To deal with issues of model uncertainty, I adopt a Bayesian model averaging approach \citep{Raftery1995, MontgomeryNyhan2010}. To assess evidence both for and against the null (see \citealt{Gill1999}), I use model probabilities (often referred to as ``posterior'' probabilities) \citep{Jackman2004, Gill2008, Jackman2009}. Below, I discuss each technique in terms of the theory and hypotheses. Because all of the outcomes of interest are dichotomous, I use logistic regression to model the outcome of interest.
+
+\subsection*{Computing Probabilities}
+
+Posterior probabilities\footnote{The literature has typically used a ratio of two posterior probabilities known as ``Bayes' factor'' to compare two models. However, for expository purposes, I only discuss the posterior probabilities of models. This quantity is more familiar and intuitive and comes in handy in dealing with model uncertainty.} improve upon the common $p$-value in several important ways. Most importantly for my purposes, posterior probabilities allow me to assess the evidence in favor of a null hypothesis. Assume a large set of $n$ models, one of which is ``correct'' in the sense that it accurately describes the process that generated a data set, $D$. Each model, $M_i$, has a posterior probability that can be computing using Bayes' rule.
+
+\begin{equation}
+p(M_i | {\bf D}) = \dfrac{p({\bf D} | M_i)p(M_i)}{\sum_{k=1}^{n}p({\bf D} | M_k)p(M_k)}\label{eqn:PostProb}
+\end{equation}
+
+Each term of the equation has an intuitive interpretation, but computation can be difficult. The first term in the numerator, $p({\bf D} | M_i)$, is simply the probability that the observed data would occur under model $i$. This is a more general case of a $p$-value, which is the probability that the data would occur under the null model. The second term in the numerator, $p(M_i)$, is the prior probability of model $i$. When $n$ models are under consideration, each model is typically assigned a prior probability of $1/n$. That is, most analyses consider all models equally likely before observing the data. Finally, the denominator simply serves as a normalizing constant, ensuring that the posterior probabilities sum to one. 
+
+In particular, the term $p({\bf D} | M_i)$ is difficult to compute. On a technical level, this quantity is computed by integrating the likelihood function of the model across the parameter vector. This can be a high-dimensional (and thus computationally expensive) integration. To combat these difficulties, I use the Bayesian Information Criterion (BIC), which contains enough information to approximately calculate the posterior probabilities.\footnote{The posterior probability of model $M_i$ can be approximately computed from its BIC, using the fact that $p(M_i | {\bf D}) \propto \text{exp}(-\dfrac{1}{2}\text{BIC}_i)$. By the law of total probability, one can approximately obtain the posterior probability of a model by $p(M_i | {\bf D}) \approx \dfrac{\text{exp}(-\dfrac{1}{2}\text{BIC}_i)}{\displaystyle \sum_{k = 1}^n \text{exp}(-\dfrac{1}{2}\text{BIC}_k)}$. For a more detailed discussion of posterior probabilities and their relationship to the BIC, see \cite{Raftery1995} and \cite{KassRaftery1995}}.
+
+Thus, the data combined with posterior probabilities provide a framework within which to evaluate evidence both for and against the current explanations for observed differences in turnout across countries, primarily that district magnitude increases the probability of turning out to vote. Further, I can use this approach to test the mechanism by which the theory works, namely that respondents in districts with larger magnitudes will be more likely to feel close to a party, feel represented by a party, and be contacted by a party. However, in addition to evaluating evidence for  and against the null, I must also overcome issues relating to model uncertainty.
+
+\subsection*{Bayesian Model Averaging} 
+
+As stated above, I have few prior beliefs about the correct model for each of the outcome variables. The large literature on political behavior in American politics points to the ``usual suspects,'' an emerging literature on comparative political behavior offers some insights, and I have some intuitions about how Taiwan might deviate from typical cases. I can further eliminate variables that do not occur causally prior to the key explanatory variable, district magnitude. Beyond these basic ideas, I have little insight into the ``correct'' models for the outcomes, particularly for an understudied case such as Taiwan. Many possible combinations of control variables exist. In the analysis, I identify 16 control variables that might be useful, meaning that I must adjudicate among $2^{16} = 65,536$ possible models.\footnote{In addition to the many combinations of control variables, it is not clear a priori how to model district magnitude. A weak theoretical rationale suggests the effect of adding an additional seat in a district should be decreasing as the number of seats increases, but there are many ways to model this effect. I consider three potential models: the district magnitude, the natural log of district magnitude, and an indicator for single-member districts. Even with the patience to carefully evaluate and compare each of these models using tools such as Bayes factors or cross-validation, it is unclear how to test hypotheses and make inferences when conclusions about model specification are inherently uncertain. I perform the analysis using each of the three measures of district magnitude, and find similar substantive results for each. I limit the discussion to the most theoretically appealing, the natural log of district magnitude.}
+
+One solution to the problem of model uncertainty that seems especially useful for the problem at hand is Bayesian model averaging, which allows me to systematically compare and combine the inferences from a large number of models. Parameters are estimated by averaging across all models, weighting by the posterior probability of the model. For example, suppose that one particular model under consideration suggests a large positive effect of district magnitude. If this model has a high probability, it will be weighted heavily, pushing the BMA estimate upward. Conversely, if the model has a low posterior probability, then it will have very little influence on the BMA estimate. 
+
+Thus, the BMA procedure produces results not commonly found in social science research, in that the mean and standard error are of little use. This is because the uncertainty surrounding the estimated coefficient can be highly non-normal. Indeed, the uncertainly around almost all coefficients can be described as a mixture of several normal distributions (one for each model that does not set the coefficient equal to zero), and a mass of probability at zero.\footnote{It might seem strange to have a distribution that is partly continuous and partly discrete. This occurs because some models exclude certain variables (or equivalently set the coefficients equal to zero). These models have positive posterior probability and therefore there is some non-zero probability that the coefficients equal zero in the averaged result. Variables that are included in the model have distributions associated with them. These distributions are continuous and describe the uncertainty around the estimates. It is important to recall that the probability of getting a particular sample from a continuous probability distribution (often called a probability density function), is zero. The results from the BMA provide a weighted mixture of continuous and discrete distributions. In the case of BMA, these distributions are described with a density function over the real line with a mass of probability at zero, so that the probability of sampling a zero is positive.} Each normal distribution is weighted by the posterior probability of its associated model, and the mass at zero is simply the sum of the posterior probabilities of models that set the coefficient to zero. If the most likely models exclude a variable, then I can be confident it has no effect. However, if the most likely models include a variable, then I can be confident it has an effect.  
+
+Because the uncertainty around each estimate is highly non-normal, the results from a BMA procedure are typically summarized using plots rather than tables. I use two types of plots to show the results: one which shows the uncertainty surrounding each coefficient, and another which ranks the models, summarizes the posterior probabilities, and shows the estimated effects of the variables for each model. The results section describes these figures in detail.
+
+In summary, the BMA strategy allows additional leverage in two areas beyond traditional hypothesis testing in political science. First, a Bayesian estimation strategy allows one to test the hypothesis that the variable of interest, district magnitude, has no effect on each of the four outcome variables of interest: voting, feeling close to a party, feeling represented, and being contacted by a party. Second, I can take into account model uncertainty, especially in the inclusion and exclusion of control variables. 
+
+\section*{Results}
+
+Results derived from a BMA approach have a slightly different interpretation than do those from more traditional methods, such as logistic regression estimated with maximum likelihood, which guarantee normal posterior distributions. Posterior distributions computed using BMA are almost guaranteed to be non-normal, with a discrete mass of probability at zero, and a continuous component consisting of a mixture of normal distributions that might be multimodal. For this reason, it makes sense to plot the posterior distributions and interpret them directly, rather than relying on a potentially misleading table of expected coefficients and standard deviations.
+
+\subsection*{The Turnout Hypothesis}
+
+I begin by briefly summarizing the results from the models of the turnout decision. The best model, which has a posterior probability of $.26$, includes only the respondent's age and the indicator for whether the respondent is married. The best five models have a combined posterior probability of $.47$.
+
+The key variable of interest--district magnitude--is equal to zero in each of the best five models. In fact, the posterior probability that district magnitude is non-zero is $.03$. That is, district magnitude almost certainly does not help to predict the turnout of respondents. There is considerable evidence for the null hypothesis that district magnitude does not affect turnout. I can be quite certain based on these  models that district magnitude exerts no meaningful impact on turnout. Figure \ref{fig:TurnoutDensity} provides a summary of the posterior distributions created by averaging across the models. This figure shows that there is a high probability that the coefficient equals zero. Figure \ref{fig:TurnoutModels} gives information about the model space, the most likely models, and the estimated coefficients in those models. Notice that district magnitude is included in very few of the most likely models. Also notice that every model including district magnitude predicts a negative effect (is colored blue). This provides strong evidence for the null. 
+
+\subsection*{The Representation Hypothesis}
+
+A similar set of results emerges from the models of whether or not the respondent feels represented. The best model includes indicators for whether the respondent is male and married and has a posterior probability of $.09$. The cumulative probability of the best five models is $.29$. 
+
+As before, district magnitude is included in none of the best five models. The posterior probability that the coefficient is non-zero is $.02$. This provides considerable evidence for the null hypothesis. Based on these data, I can be quite confident that district magnitude has no meaningful effect on the probability that a respondent feels represented. Figure \ref{fig:RepresentedDensity} provides the posterior distribution created by the BMA procedure in the models of feeling represented. This figure shows that district magnitude almost certainly has no effect. Figure \ref{fig:RepresentedModels} gives the information about the model space, the most likely models, and the estimated coefficients in those models. Notice that district magnitude is included in very few of the most likely models, even though the estimated effect is positive (is colored red) in those models including it. Again, these results provide strong evidence for the null. 
+
+\subsection*{The Closeness Hypothesis}
+
+The BMA results for whether the respondent feels close to a political party are slightly different from the previous results. The best model includes only household income, but the posterior probability of this model is only about $.07$. The best five models have a cumulative probability of about $.21$.
+
+Similar to the previous results, district magnitude has a positive effect in very few models, and those models receive very little weight. The posterior probability that the effect is non-zero is $.03$, which is, again, strong evidence against the closeness hypothesis. Figure \ref{fig:CloseDensity} provides the posterior distribution created by the BMA procedure in the models of feeling represented. This figure shows that while the non-zero portion of the density is almost entirely positive, the vertical bar extends to about .97. This offers strong evidence of no effect. Figure \ref{fig:CloseModels} gives the information about the model space, the most likely models, and the estimated coefficients in those models. Notice that while district magnitude is included in several of the most likely models, and the estimated effect is positive (is colored red) in those models including it, the posterior probabilities of those models is extremely small.
+
+\subsection*{The Contact Hypothesis}
+
+The BMA results for whether the respondent feels close to a political party are similar to the results for the Turnout and Representation Hypotheses. The best model includes only household income, and the posterior probability of this model is about $.22$. The best five models have a cumulative probability of about $.38$.
+
+Consistent with the trend in this analysis, district magnitude is excluded from most of the best fitting models, with the posterior probability of the effect being non-zero less than $.03$. This provides considerable evidence for the null hypothesis. Based on these data, I can be quite confident that district magnitude has no meaningful effect on the probability of a respondent being contacted by a political party. Figure \ref{fig:ContactedDensity} provides the posterior distribution created by the BMA procedure in the models of being contacted. This figure shows district magnitude almost certainly has no effect. Figure \ref{fig:ContactedModels} gives the information about the model space, the most likely models, and the estimated coefficients in those models. Notice that district magnitude is included in very few of the most likely models, and that the estimated effect is negative (is colored blue) in those models including it. Again, this provides strong evidence for the null. 
+
+\section*{Discussion and Conclusion}
+
+The preceding results shed some light on the claim that proportional electoral rules lead to higher turnout and various explanations for why they may do so. In an earlier section, I describe four hypotheses suggested by previous research that purports to explain why turnout is higher under proportional rules. First, I examine the basic claim that proportional rules lead to higher turnout. Using a Bayesian approach to assess evidence both for and against the null, I find substantial evidence in favor of the null hypothesis, contrary to previous research. Second, I examine the theoretical mechanisms of feeling represented, feeling close to a party, and being contacted by a party. I find evidence that an increase in district magnitude does not affect any of these theoretical mechanisms.
+
+These results cast doubt upon the claim that turnout is higher under proportional rules. I use the case of Taiwan to hold the national political context constant while varying the proportionality of the electoral rules substantially. If the claim that turnout is higher under proportional rules is correct, then turnout should be higher in districts with a large number of seats. This is not the case. Similarly, if the theory explaining the phenomenon is correct, then citizens in districts with large magnitudes should feel more represented, feel closer to political parties, and/or be contacted more often. The evidence in each case strongly favors the null.
+
+The literature following \cite{Powell1986} argues strongly that proportional rules lead to higher turnout, leading \cite{Lijphart1997} to suggest that democratic political systems with low turnout consider switching to some form of proportional representation to boost citizen participation. Since this recommendation, scholars have suggested more skepticism \citep{BlaisAarts2006}. This analysis supports the accumulating evidence that the relationship between proportional rules and higher turnout is not as consistent and powerful as once thought. 
+
+\clearpage \singlespace \normalsize
+\bibliographystyle{apsr_fs}
+\bibliography{bibliography}
+
+\input{tabs/turnout_table.tex}
+
+\newpage
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{figs/TurnoutDensity.pdf}
+\caption{A figure showing the posterior densities of model coefficients for turnout based on the BMA procedure. Note that the height of the dark line indicates the posterior probability that the coefficient equals zero. The remaining density shows the distribution of coefficients in models that include the variable. Importantly, district magnitude almost certainly has no effect, as shown by the vertical line that nearly reaches one. Also, much of the posterior density is negative, indicating that while the effect is likely zero, it is almost certainly not positive.}\label{fig:TurnoutDensity}
+\end{figure}
+
+\newpage
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{figs/TurnoutModels.pdf}
+\caption{A figure showing the models of turnout considered by the BMA procedure. For each model, variables with positive effects are colored red, variables with negative effects are colored blue, and variables excluded from the model are white. The width of the area alloted to each model corresponds to the posterior probability of that model. For example the best model, Model \#1, has a posterior probability of about 0.25 and includes the variables Age and Married, both of which have positive effects. This figure shows that district magnitude has little or no effect on the probability of turning out to vote, since it is included in very few of the most likely models.}\label{fig:TurnoutModels}
+\end{figure}
+
+\input{tabs/represented_table.tex}
+
+
+\newpage
+\begin{figure}[h]
+\includegraphics{figs/RepresentedDensity.pdf}
+\caption{A figure showing the posterior densities of model coefficients for feeling represented based on the BMA procedure. Note that the height of the dark line indicates the posterior probability that the coefficient equals zero. The remaining density shows the distribution of coefficients in models that include the variable. Importantly, district magnitude almost certainly has no effect, as shown by the vertical line that nearly reaches one. This indicates that the effect is likely zero.}\label{fig:RepresentedDensity}
+\end{figure}
+
+\newpage
+\begin{figure}[h]
+\includegraphics{figs/RepresentedModels.pdf}
+\caption{A figure showing the models of feeling represented considered by the BMA procedure. For each model, variables with positive effects are colored red, variables with negative effects are colored blue, and variables excluded from the model are white. The width of the area alloted to each model corresponds to the posterior probability of that model. This figure shows that district magnitude has little or no effect on feeling represented by a political party, since it is included in very few of the most likely models.}\label{fig:RepresentedModels}
+\end{figure}
+
+\input{tabs/close_table.tex}
+
+\newpage
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{figs/CloseDensity.pdf}
+\caption{A figure showing the posterior densities of model coefficients for feeling close to a party based on the BMA procedure. Note that the height of the dark line indicates the posterior probability that the coefficient equals zero. The remaining density shows the distribution of coefficients in models that include the variable. Because the vertical line extends nearly to one, this figure shows that district magnitude has very little effect on the probability of feeling close to a political party.}\label{fig:CloseDensity}
+\end{figure}
+
+\newpage
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{figs/CloseModels.pdf}
+\caption{A figure showing the models of feeling close to a party considered by the BMA procedure. For each model, variables with positive effects are colored red, variables with negative effects are colored blue, and variables excluded from the model are white. The width of the area alloted to each model corresponds to the posterior probability of that model. This figure shows that the posterior probability of models including district magnitude is very low, even though its estimated effect when included tends to be positive.}\label{fig:CloseModels}
+\end{figure}
+
+\input{tabs/contacted_table.tex}
+
+%
+\newpage
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{figs/ContactedDensity.pdf}
+\caption{A figure showing the posterior densities of model coefficients for being contacted by a party based on the BMA procedure. Note that the height of the dark line indicates the posterior probability that the coefficient equals zero. The remaining density shows the distribution of coefficients in models that include the variable. Importantly, district magnitude almost certainly has no effect, as shown by the vertical line that nearly reaches one. Also, much of the posterior density is negative, indicating that while the effect is likely zero, it is almost certainly not positive.}\label{fig:ContactedDensity}
+\end{figure}
+
+\newpage
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{figs/ContactedModels.pdf}
+\caption{A figure showing the models of being contacted by a political party considered by the BMA procedure. For each model, variables with positive effects are colored red, variables with negative effects are colored blue, and variables excluded from the model are white. The width of the area alloted to each model corresponds to the posterior probability of that model. This figure shows that district magnitude has little effect on the probability of being contacted by a political party, since it is included in very few of the most likely models.}\label{fig:ContactedModels}
+\end{figure}
+
+\end{document}
+
