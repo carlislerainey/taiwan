@@ -201,10 +201,16 @@ mi.vars <- c("Cast.Ballot", "Represented", "Close.To.Party", "Contacted",
              "Household.Income", "Rural", "Small.Town", "Suburb", 
              "White.Collar", "Worker", "Hakka", "MinNan", "Mainlander")
 overreport.vars <- c("Cast.Ballot", "log.Magnitude", "Magnitude", "District")
+pred.vars <- c("Cast.Ballot", 
+             "log.Magnitude", "Age", "Age.Squared.by.100", 
+             "Male", "Education", "Married", "Union.Member", 
+             "Household.Income", "Rural", "Small.Town", "Suburb", 
+             "White.Collar", "Worker", "Hakka", "MinNan", "Mainlander")
 
 twn2001.main <- twn2001[ , main.vars]
 twn2001.mi <- twn2001[ , mi.vars]
 twn2001.overreport <- twn2001[ , overreport.vars]
+twn2001.pred <- na.omit(twn2001[, pred.vars])
 
 
 
@@ -214,6 +220,8 @@ twn2001.overreport <- twn2001[ , overreport.vars]
 write.csv(twn2001.main, "output/clean-data.csv")
 write.csv(twn2001.mi, "output/clean-data-for-mi.csv")
 write.csv(twn2001.overreport, "output/clean-data-for-overreport.csv")
+write.csv(twn2001.pred, "output/clean-data-for-turnout-pred.csv")
+
 
 
 ####################################################################
