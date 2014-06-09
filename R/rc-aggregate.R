@@ -17,11 +17,15 @@ library(arm)
 ag <- read.csv("data/aggregate.csv")
 
 ag$turnout <- ag$total_votes/ag$eligible_voters
-
+rownames(ag) <- ag$district
 # linear model with eligible voters as control
 m1 <- lm(turnout ~ log(m) + log(eligible_voters), data = ag)
 display(m1, detail = TRUE)
-plot(m1)
+
+png("memo/figs/cooks.png", height = 5, width = 6, res = 72, units = "in")
+par(mfrow = c(1, 1), oma = c(0,0,0,0), mar = c(6,4,2,2))
+plot(m1, which = 5)
+dev.off()
 
 # drop Lianjiang County
 m2 <- lm(turnout ~ log(m) + log(eligible_voters), 
@@ -32,5 +36,23 @@ display(m2, detail = TRUE)
 m3 <- lm(turnout ~ log(m), data = ag)
 display(m3, detail = TRUE, digits = 3)
 V <- vcovHC(m3)
-coeftest(m3, V)
+
+coeftest(m3, V, digits = 3)
+
+# plots
+m1 <- lm(turnout ~ log(m), data = ag)
+display(m1, detail = TRUE, digits = 3)
+m2 <- rlm(turnout ~ log(m), data = ag, method = "MM")
+summary(m2, detail = TRUE)
+
+png("memo/figs/scatter.png", height = 5, width = 6, res = 72, units = "in")
+par(mfrow = c(1, 1), oma = c(0,0,0,0), mar = c(5,4,2,2))
+plot(log(ag$m), ag$turnout, xlab = "log(m)", ylab = "turnout")
+abline(m1, col = "black", lwd = 3, lty = 1)
+abline(m2, col = "red", lwd = 3, lty = 2)
+legend(x = 1.4, y = .62, 
+       legend = c("OLS Estimation", "MM Estimation"),
+       lwd = 2, lty = c(1, 2), col = c("black", "red"),
+       bty = "n")
+dev.off()
 
