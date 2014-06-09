@@ -212,7 +212,7 @@ twn2001.overreport <- twn2001[ , overreport.vars]
 
 # SAVE THESE DATA
 write.csv(twn2001.main, "output/clean-data.csv")
-write.csv(twn2001.mi, "output/clean_data-for-mi.csv")
+write.csv(twn2001.mi, "output/clean-data-for-mi.csv")
 write.csv(twn2001.overreport, "output/clean-data-for-overreport.csv")
 
 
