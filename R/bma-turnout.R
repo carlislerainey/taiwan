@@ -6,10 +6,10 @@
 
 # CLEAR WORKSPACE
 rm(list = ls())
-library(xtable)
 
 # LOAD PACKAGES
 library(BMA)
+library(xtable)
 
 # LOAD PRE-CLEANED DATA
 twn2001 <- read.csv("output/clean-data.csv")
