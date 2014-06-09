@@ -36,7 +36,6 @@ display(m1, detail = TRUE, digits = 3)
 # random effects model
 m2 <- lmer(Dif ~ log.Magnitude  + (1 | District), data = d)
 display(m2, detail = TRUE, digits = 3)
-sim2 <- fixef(sim(m2, n = 1000))
 
 # GEE model
 m3 <- geeglm(Dif ~ log.Magnitude, id = d$District, data = d,
