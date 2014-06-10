@@ -10,6 +10,7 @@ rm(list = ls())
 # LOAD PACKAGES
 library(BMA)
 library(xtable)
+library(arm)
 
 # LOAD PRE-CLEANED DATA
 twn2001 <- read.csv("output/clean-data-for-turnout-pred.csv")
@@ -30,7 +31,7 @@ plot(twn2001$log.Magnitude, twn2001$pred)
 m0 <- lm(pred ~ log.Magnitude, data = twn2001)
 display(m0, digits = 3, detail = TRUE)
 abline(m0)
-coef(m0)[2]*2.5
+coef(m0)[2]*log(13)
 
 summary(bma1)
 cor(twn2001)
