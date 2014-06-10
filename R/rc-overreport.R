@@ -13,6 +13,7 @@ library(sandwich)
 library(lmtest)
 library(blme)
 library(geepack)
+library(arm)
 
 # LOAD PRE-CLEANED DATA
 d <- read.csv("output/clean-data-for-overreport.csv")
@@ -57,6 +58,9 @@ coeftest(m1, Sigma)
 # predicting voting with actual turnout
 m4 <- glm(Cast.Ballot ~ Turnout, family = binomial, data = d)
 m5 <- glm(Cast.Ballot ~ Turnout*log.Magnitude, family = binomial, data = d)
+display(m4)
+display(m5)
 anova(m4, m5, test = "Chisq")
 AIC(m4, m5)
+BIC(m4, m5)
 
