@@ -41,7 +41,7 @@ coeftest(m3, V, digits = 3)
 # just a scatterplot of turnout and magnitude
 m1 <- lm(turnout ~ log(m), data = ag)
 display(m1, detail = TRUE, digits = 3)
-m2 <- rlm(turnout ~ log(m), data = ag, method = "MM")
+m2 <- rlm(turnout ~ log(m), data = ag, method = "M")
 summary(m2, detail = TRUE)
 
 png("memo/figs/scatter.png", height = 5, width = 6, res = 72, units = "in")
@@ -50,7 +50,7 @@ plot(log(ag$m), ag$turnout, xlab = "log(m)", ylab = "turnout")
 abline(m1, col = "black", lwd = 3, lty = 1)
 abline(m2, col = "red", lwd = 3, lty = 2)
 legend(x = 1.4, y = .62, 
-       legend = c("OLS Estimation", "MM Estimation"),
+       legend = c("OLS Estimation", "M Estimation"),
        lwd = 2, lty = c(1, 2), col = c("black", "red"),
        bty = "n")
 dev.off()
