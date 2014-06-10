@@ -1018,6 +1018,7 @@ FUNCTION {unpublished}
     { skip$ }
     { format.title quote "title" output.check }
   if$
+  note "note" output.check
   fin.entry
 }
 
