@@ -15,9 +15,9 @@ library(arm)
 
 # LOAD PRE-CLEANED DATA
 ag <- read.csv("data/aggregate.csv")
-
 ag$turnout <- ag$total_votes/ag$eligible_voters
 rownames(ag) <- ag$district
+
 # linear model with eligible voters as control
 m1 <- lm(turnout ~ log(m) + log(eligible_voters), data = ag)
 display(m1, detail = TRUE)
@@ -36,10 +36,9 @@ display(m2, detail = TRUE)
 m3 <- lm(turnout ~ log(m), data = ag)
 display(m3, detail = TRUE, digits = 3)
 V <- vcovHC(m3)
-
 coeftest(m3, V, digits = 3)
 
-# plots
+# just a scatterplot of turnout and magnitude
 m1 <- lm(turnout ~ log(m), data = ag)
 display(m1, detail = TRUE, digits = 3)
 m2 <- rlm(turnout ~ log(m), data = ag, method = "MM")
