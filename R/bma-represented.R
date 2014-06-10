@@ -27,14 +27,21 @@ y <- twn2001[, outcome.var]
 bma1 <- bic.glm(X, y, glm.family = "binomial", OR = 1000)
 summary(bma1)
 
+var.names <- c("Age", "Age Squared by 100", "Male", "Education",
+               "Married", "Union Member", "Household Income",
+               "Rural", "Small Town", "Suburb", "White Collar",
+               "Worker", "Hakka", "Min Nan", "Mainlander", "log(Magnitude)")
+
 pdf("doc/figs/RepresentedDensity.pdf", height = 6, width = 9)
+source("R/fn-plot-posterior.R")
 par(oma = c(1,1,0,0), mar = c(2,2,3,1), las = 1)
-plot(bma1, mfrow = c(4,4), ylim = c(0,1))
+plot.posterior(bma1, mfrow = c(4,4), ylim = c(0,1), names = var.names)
 dev.off()
 
 pdf("doc/figs/RepresentedModels.pdf", height = 6, width = 9)
+source("R/fn-plot-modelspace.R")
 par(mfrow = c(1,1), oma = c(0, 3,0,0))
-imageplot.bma(bma1, color = c("red", "blue", "white"))
+plot.modelspace(bma1, color = c("black", "red", "white"), names = var.names)
 dev.off()
 
 options(scipen=999)
