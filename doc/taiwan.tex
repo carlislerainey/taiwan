@@ -1,28 +1,65 @@
 %
-%
 \documentclass[12pt]{article}
-\usepackage{amssymb}
-\usepackage{amsmath}
-\usepackage{amsthm}
+
 \usepackage{fullpage}
-\usepackage{bibentry}
-\usepackage{footmisc}
-\usepackage{graphicx}
-\usepackage{longtable}
-\usepackage{dcolumn}
-\usepackage{natbib}
-\bibpunct{(}{)}{,}{a}{}{;}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{multicol}
 \usepackage{setspace}
-\singlespace
-% Fix enumerate environment
-\newenvironment{my_enumerate}
-{\begin{enumerate}
-\setlength{\itemsep}{0pt}
-\setlength{\parskip}{0pt}
-\setlength{\parsep}{0pt}}
-{\end{enumerate}}
+\usepackage{endnotes}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{calrsfs}
+\usepackage{rotating}
+\usepackage{dcolumn}
+\usepackage{longtable}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage{natbib}
+\bibpunct{(}{)}{;}{a}{}{,}
+\usepackage{framed}
+\usepackage{lipsum}
+\usepackage[font=small,labelfont=sc]{caption}
+ \usepackage{float}
+\restylefloat{table}
+\usepackage[usenames,dvipsnames]{color}
+
+% refs and pdf meta
+\usepackage{hyperref}
+\hypersetup{
+ pdftitle={ Does District Magnitude Matter? The Case of Taiwan}, % title
+ pdfauthor={Carlisle Rainey}, % author
+ pdfkeywords={Taiwan}{electoral rules}{BMA}{Bayesian Model Averaging}{turnout}
+ pdfnewwindow=true, % links in new window
+ colorlinks=true, % false: boxed links; true: colored links
+ linkcolor=black,%BrickRed, % color of internal links
+ citecolor=black, % color of links to bibliography
+ filecolor=black, % color of file links
+ urlcolor=black % color of external links
+}
+
+% Set up theorems, etc.
+\usepackage{amsthm}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{claim}{Claim}
+\newtheorem{assumption}{Assumption}
+\newtheorem{defn}{Definition}
+
+
+% Allow restating theorems (for the Appendix)
+\usepackage{thmtools}
+\usepackage{thm-restate}
+\usepackage{cleveref}
+
+% Set up fonts the way I like
+\usepackage{tgpagella}
+\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
+\usepackage[bitstream-charter]{mathdesign}
+
+
 %Redefine the first level
 \renewcommand{\theenumi}{\arabic{enumi}.}
 \renewcommand{\labelenumi}{\theenumi}
@@ -35,43 +72,16 @@
 %Redefine the fourth level
 \renewcommand{\theenumiv}{\Alph{enumiv}.}
 \renewcommand{\labelenumiv}{\theenumiv}
-% Fix section headings
-\usepackage{sectsty} 
-\sectionfont{\large\centering\normalfont} 
-\subsectionfont{\small\normalfont\itshape} 
-\usepackage[compact]{titlesec}
-\titlespacing{\section}{0pt}{2ex}{1ex}
-\titlespacing{\subsection}{0pt}{2ex}{1ex}
-\titlespacing{\subsubsection}{0pt}{2ex}{0ex}
-\titleformat{\subsubsection}[runin]{\normalfont\sc}{}{.5em}{}[.---]
-\newtheorem{thm}{Theorem}
-\newtheorem{lem}{Lemma}
-\newtheorem{obs}{Observation}
-\newtheorem{prop}{Proposition}
-\newtheorem{cor}{Corollary}
-\newtheorem{mydef}{Definition}
-\usepackage{microtype}
-\usepackage{hyperref}
-%\usepackage{hypdvips}
+
+\parskip=0pt
+\parindent=20pt
+\usepackage{lscape}
+\singlespace
+
+% Create footnote command so that my name
+% has an asterisk rather than a one.
 \long\def\symbolfootnote[#1]#2{\begingroup%
 \def\thefootnote{\fnsymbol{footnote}}\footnote[#1]{#2}\endgroup}
-\hypersetup{
- pdftitle={Does District Magnitude Matter? The Case of Taiwan}, % title
- pdfauthor={Carlisle Rainey}, % author
- pdfkeywords={Taiwan} {electoral rules} {no effect} {proportional rules} {turnout},
- pdfnewwindow=true, % links in new window
- colorlinks=true, % false: boxed links; true: colored links
- linkcolor=Sepia, % color of internal links
- citecolor=Sepia, % color of links to bibliography
- filecolor=Sepia, % color of file links
- urlcolor=Sepia, % color of external links
- menucolor=Sepia
-}
-
-\title{Does District Magnitude Matter? The Case of Taiwan}
-
-\date{\today}
-\usepackage[normalem]{ulem}
 
 \begin{document}
 
@@ -79,9 +89,16 @@
 \begin{center}
 {\LARGE Does District Magnitude Matter? The Case of Taiwan}\\\vspace{2mm}
 \vspace{10mm}
-Carlisle Rainey\symbolfootnote[1]{Carlisle Rainey is an Assistant Professor of Political Science, University at Buffalo, SUNY, 520 Park Hall, Buffalo, NY 14260 (\href{mailto:rcrainey@buffalo.edu}{rcrainey@buffalo.edu}). I thank Jason Barabas, Bob Jackson, Dave Siegel, and Deb Sinha for helpful comments on previous versions of this manuscript. All data and code necessary to replicate these results can be found at \href{https://github.com/carlislerainey/taiwan}{github.com/carlislerainey/taiwan}.}\\
-
+Carlisle Rainey\symbolfootnote[1]{Carlisle Rainey is Assistant Professor of Political Science, Texas A\&M University, 2010 Allen Building, College Station, TX, 77843 (\href{mailto:crainey@tamu.edu}{crainey@tamu.edu}). I thank Jason Barabas, Bob Jackson, Dave Siegel, and Deb Sinha for helpful comments on previous versions of this manuscript. All data and code necessary to replicate these results can be found at \href{https://github.com/carlislerainey/taiwan}{github.com/carlislerainey/taiwan}.}\\
+\vspace{5mm}
+\begin{footnotesize}
+Accepted for publication at \textit{Electoral Studies}.\\
+\vspace{3mm}
+\today
+\end{footnotesize}
 \end{center}
+
+
 \vspace{10mm}
 \begin{quote}
 \begin{center} \bf{ABSTRACT}\end{center}
@@ -91,7 +108,7 @@ A sizable literature on electoral institutions argues that proportional electora
 
 \doublespace
 %\newpage
-A literature extending forward from \cite{Powell1986} suggests that majoritarian electoral rules generate chronically lower voter turnout. Since politicians have incentives to represent voters, who tend to have higher socioeconomic status, some political scientists have argued that countries with chronically low participation rates should switch to proportional rules in order to boost turnout \citep{Lijphart1997, Lijphart1999}. However, recent work that extends empirical tests beyond western Europe casts doubt upon the general causal claim that proportional rules generate higher turnout. For example, using a large set of democracies inside and outside Europe, \cite{BlaisDobrzynska1998} demonstrate that, while electoral institutions might affect participation, the effect is most likely quite small. Further, \cite{BlaisAarts2006} criticize this literature for claiming that proportional rules cause higher turnout, while only observing a small, inconsistent correlation and having conflicting explanations for the effect. Theoretically, \cite{Jackman1987} points out that voters have less incentive to participate in PR systems because elections are less decisive \citep{Powell2000}. Further, \cite{SchramSonnemans1996} and \cite{HerreraMorelliPalfrey2013} offer formal models and experimental results that suggest proportional rules \textit{decrease} the incentives to mobilize voters, at least in some contexts. \cite{KarpBanducciBowler2007} and \cite{Rainey2011} use observational data to show that parties exert greater mobilization effort under \textit{dis}proportional rules. This research offers sufficient theoretical and empirical evidence to give political scientists pause, suggesting that until the effect is demonstrated in a wider range of cases and a more compelling theoretical argument emerges, skepticism is warranted and further study is required.
+A literature extending forward from \cite{Powell1986} suggests that majoritarian electoral rules generate chronically lower voter turnout. Since politicians have incentives to represent voters, who tend to have higher socioeconomic status, some political scientists have argued that countries with chronically low participation rates should switch to proportional rules in order to boost turnout \citep{Lijphart1997, Lijphart1999}. However, recent work that extends empirical tests beyond western Europe casts doubt upon the general causal claim that proportional rules generate higher turnout. For example, using a large set of democracies inside and outside Europe, \cite{BlaisDobrzynska1998} demonstrate that, while electoral institutions might affect participation, the effect is most likely quite small. Further, \cite{BlaisAarts2006} criticize this literature for claiming that proportional rules cause higher turnout, while only observing a small, inconsistent correlation and having conflicting explanations for the effect. Theoretically, \cite{Jackman1987} points out that voters have less incentive to participate in PR systems because elections are less decisive \citep{Powell2000}. Further, \cite{SchramSonnemans1996} and \cite{HerreraMorelliPalfrey2013} offer formal models and experimental results that suggest proportional rules \textit{decrease} the incentives to mobilize voters, at least in some contexts. \cite{KarpBanducciBowler2007} and \cite{Rainey2015} use observational data to show that parties exert greater mobilization effort under \textit{dis}proportional rules. This research offers sufficient theoretical and empirical evidence to give political scientists pause, suggesting that until the effect is demonstrated in a wider range of cases and a more compelling theoretical argument emerges, skepticism is warranted and further study is required.
 
 In this paper, I use survey data from the 2001 Taiwan legislative election to test the claim that more proportional electoral rules lead to higher turnout, as well as several of the causal mechanisms. These data are especially useful for testing this claim because Taiwan is one of few countries with substantial variation in the proportionality of electoral rules across electoral districts. In particular, the 2001 Taiwanese electoral system features several single-member districts and multimember districts with magnitudes up to 13. Using these data allows me to hold the national political context constant as district magnitude varies, unlike earlier studies, making the inferences more compelling.
 
