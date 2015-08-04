@@ -2,6 +2,12 @@
 # Make sure that working directory is set properly, e.g.,
 # setwd("~/Dropbox/projects/taiwan/")
 
+install <- TRUE
+if (install == TRUE) {
+  install.packages(c("BMA", "xtable", "arm", "compactr", "texreg",
+                     "sandwich", "lmtest", "blme", "geepack"))
+}
+
 # Clear workspace
 rm(list = ls())
 
