@@ -1,4 +1,4 @@
-Manuscript, code, and data for "Does District Magnitude Matter? The Case of Taiwan." [[Paper](http://www.carlislerainey.com/files/taiwan.pdf)]
+Manuscript, code, and data for "Does District Magnitude Matter? The Case of Taiwan." [[Paper](http://www.carlislerainey.com/papers/taiwan.pdf)]
 
 > A sizable literature on electoral institutions argues that proportional electoral rules lead to higher voter turnout. However, recent work finds little evidence that the effect generalizes beyond western Europe and the theoretical arguments remain sparse, incomplete, and contradictory. I use a well-chosen data set to resolve problems of omitted variable bias and Bayesian model averaging to address model uncertainty and evaluate evidence both for and against the null hypotheses. I find evidence that the proportionality of electoral rules exerts no meaningful effect on turnout or the any of the theoretical mechanisms I test.
 
