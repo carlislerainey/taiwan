@@ -129,6 +129,7 @@ par(mfrow = c(1,1), mar = c(5,1,1,1), oma = c(0,0,0,0))
 eplot(xlim = c(-.15, 0.15), ylim = c(1,5),
       anny = FALSE,
       xlab = "Estimated Effect of Moving\nMagnitude from One to Ten",
+      text.size = 1.2,
       xlabpos = 3) 
 abline(v = 0)
 abline(v = .1, lty = 2)
@@ -137,19 +138,19 @@ abline(v = .05, lty = 2, col = "grey")
 # Cast.Ballot
 lines(qi1[c(1,3)], c(4,4), lwd = 2)
 points(qi1[2], 4, pch = 19)
-text(qi1[2], 4, "Cast Ballot", pos = 3)
+text(qi1[2], 4, "Turning Out to Vote", pos = 3)
 # Represented
 lines(qi2[c(1,3)], c(3,3), lwd = 2)
 points(qi2[2], 3, pch = 19)
-text(qi2[2], 3, "Feel Represented", pos = 3)
+text(qi2[2], 3, "Feeling Represented", pos = 3)
 # Close.To.Party
 lines(qi3[c(1,3)], c(2,2), lwd = 2)
 points(qi3[2], 2, pch = 19)
-text(qi3[2], 2, "Feel Close to a Party", pos = 3)
+text(qi3[2], 2, "Feeling Close to a Party", pos = 3)
 # Contacted
 lines(qi4[c(1,3)], c(1,1), lwd = 2)
 points(qi4[2], 1, pch = 19)
-text(qi4[2], 1, "Contacted by a Party", pos = 3)
+text(qi4[2], 1, "Being Contacted by a Party", pos = 3)
 dev.off()
 
 # SAVE TABLE
